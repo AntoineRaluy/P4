@@ -16,10 +16,10 @@ class postManager extends Manager
     public function getPost($postId)
     {
         $connection=$this->dbConnect();
-        $query = $connection->query('SELECT id, title, content, creationDate FROM post WHERE id = ?');
-        $query->execute(array($postId));
-        $result = $query->fetch();
-
-        return $result;
+        $statement = $connection->prepare('SELECT id, title, content, author, creationDate FROM post WHERE id = :id');
+        $statement->execute(['id'=>$postId]);
+        $postArray = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        return $postArray;
     }
 }
