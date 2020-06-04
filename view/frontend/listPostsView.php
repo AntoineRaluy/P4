@@ -9,9 +9,9 @@
     <br>
     <em>le <?= $post['creationDate'] ?> par <?= $post['author'] ?></em>
     <br><br>
-    <em><a href="#">Commentaires</a></em></p>
+    <em><a href="index.php?action=post&amp;id=<?= $post['id'] ?>">Commentaires</a></em></p>
 <?php endforeach; ?>
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+<?php require 'template.php'; ?>

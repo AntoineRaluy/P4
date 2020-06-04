@@ -1,22 +1,22 @@
-<?php require('model/Post.php');
+<?php $title = $post['title']; ?>
 
-$post = new Post();
-$posts = $post->getPosts();
+<?php ob_start(); ?>
+<p><a href="index.php">Retour à la liste des articles</a></p>
 
-while($post=$posts->fetch())
-{?>
-    <div>
-        <h2><?= htmlspecialchars($post['title']);?></h2>
-        <p><?= htmlspecialchars($post['content']);?></p>
-        <p><?= htmlspecialchars($post['author']);?></p>
-        <p>Créé le : <?= htmlspecialchars($post['creationDate']);?></p>
-    </div>
-    <br>
-<?php
-}
-$articles->closeCursor();
-?>
+<div class="chapter">
+    <h3> <?= htmlspecialchars($post['title']) ?>
+        <em>le <?= $post['creationDate'] ?></em>
+    </h3>
+    <p> <?= nl2br(htmlspecialchars($post['content'])) ?> </p>
 </div>
+
+<h2>Commentaires :</h2>
+
+<?php foreach($comments as $comment): ?>
+    <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date'] ?></p>
+    <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+<?php endforeach; ?>
+
+<?php $content = ob_get_clean(); ?>
   
-<?php 
-require('template.php');
+<?php require 'template.php'; ?>
