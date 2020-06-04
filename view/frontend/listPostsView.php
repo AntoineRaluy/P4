@@ -2,8 +2,12 @@
 
 <?php ob_start(); ?>
     <h1>Jean Forteroche</h1>
-    <p>En construction</p>
-    
+
+<?php foreach($posts as $post): ?>
+    <h2><?= $post['title'] ?> </h2>
+
+<?php endforeach; ?>
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>
