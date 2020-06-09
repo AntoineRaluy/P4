@@ -14,4 +14,13 @@ class commentManager extends Manager
         return $commentsArray;
     }
 
+    public function postComment($postId, $author, $comment)
+    {
+        $connection=$this->dbConnect();
+        $statement = $connection->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
+        $newComment = $statement->execute(array($postId, $author, $comment));
+
+        return $newComment;
+    }
+
 }
