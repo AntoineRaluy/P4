@@ -32,3 +32,11 @@ function addComment($postId, $author, $comment)
         header('Location: index.php?action=post&id=' . $postId);
     }
 }
+
+function flagComment($commentId, $postId)
+{
+    $commentManager = new commentManager();
+    $reportedComment = $commentManager->reportComment($commentId);
+
+    header('Location: index.php?action=post&id='.$postId);
+}

@@ -7,7 +7,7 @@ class commentManager extends Manager
     public function getComments($postId)
     {
         $connection=$this->dbConnect();
-        $statement = $connection->prepare('SELECT author, comment, comment_date FROM comments WHERE post_id = :id ORDER BY comment_date DESC');
+        $statement = $connection->prepare('SELECT id, author, comment, comment_date, flag FROM comments WHERE post_id = :id ORDER BY comment_date DESC');
         $statement->execute(['id'=>$postId]);
         $commentsArray = $statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -21,6 +21,13 @@ class commentManager extends Manager
         $newComment = $statement->execute(array($postId, $author, $comment));
 
         return $newComment;
+    }
+
+    public function reportComment($commentId)
+    {
+        $connection=$this->dbConnect();
+        $update = $connection->prepare('UPDATE comments SET flag = 1 WHERE id = :id');
+        $update->execute(['id'=>$commentId]);
     }
 
 }

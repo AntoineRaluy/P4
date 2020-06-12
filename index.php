@@ -1,6 +1,7 @@
 <?php
 
 require_once 'controller/frontend.php';
+require_once 'config.php';
 
 try {
     if (isset($_GET['action'])) {
@@ -26,6 +27,14 @@ try {
             }
             else {
                 throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
+        elseif ($_GET['action'] == 'reportComment') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                flagComment($_GET['id'], $_GET['idPost']);
+            }
+            else {
+                throw new Exception('Aucun identifiant de commentaire envoyé');
             }
         }
     }

@@ -7,6 +7,7 @@
     </head>
         
     <body>
+        <p><a href="/controller/backend.php">Connexion</a></p>
         <?= $content ?>
     </body>
 </html>

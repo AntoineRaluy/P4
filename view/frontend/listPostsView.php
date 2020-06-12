@@ -7,7 +7,7 @@
     <h2><?= $post['title'] ?> </h2>
     <p><?= $post['content'] ?>
     <br>
-    <em>le <?= $post['creationDate'] ?> par <?= $post['author'] ?></em>
+    <em>le <?= $post['creationDate'] ?></em>
     <br><br>
     <em><a href="index.php?action=post&amp;id=<?= $post['id'] ?>">Commentaires</a></em></p>
 <?php endforeach; ?>

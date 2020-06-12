@@ -29,6 +29,13 @@
 <?php foreach($comments as $comment): ?>
     <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date'] ?></p>
     <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+
+    <?php if($comment['flag'] === '1'):?>
+        <p><em>Ce commentaire a déjà été signalé.</em></p>
+        <?php else: ?>
+        <p><em><a href="index.php?action=reportComment&amp;id=<?= $comment['id'] ?>&amp;idPost=<?= $_GET['id'] ?>">Signaler ce commentaire</a></em></p>
+        <?php endif;?>
+    
 <?php endforeach; ?>
 
 <?php $content = ob_get_clean(); ?>

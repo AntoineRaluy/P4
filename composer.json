@@ -1,0 +1,14 @@
+{
+    "name": "cyber/p4",
+    "authors": [
+        {
+            "name": "AntoineRaluy",
+            "email": "57936050+AntoineRaluy@users.noreply.github.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "model"
+        }
+    }
+}
