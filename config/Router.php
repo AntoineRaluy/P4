@@ -39,7 +39,7 @@ class Router
                 elseif ($_GET['action'] == 'addComment') {
                     if (isset($_GET['chapterId']) && $_GET['chapterId'] > 0) {
                         if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-                            addComment($_GET['chapterId'], $_POST['author'], $_POST['comment']);
+                            $this->frontController->addComment($_GET['chapterId'], $_POST['author'], $_POST['comment']);
                         }
                         else {
                             $this->errorController->errorEmpty();
@@ -51,9 +51,18 @@ class Router
                         // throw new Exception('Page inconnue');
                     }
                 }
-                elseif ($_GET['action'] == 'reportComment') {
-                    if (isset($_GET['id']) && $_GET['id'] > 0) {
-                        flagComment($_GET['id'], $_GET['idPost']);
+                elseif ($_GET['action'] === 'reportComment') {
+                    if (isset($_GET['commentId']) && $_GET['commentId'] > 0) {
+                        $this->frontController->flagComment($_GET['commentId'], $_GET['chapterId']);
+                    }
+                    else {
+                        $this->errorController->errorNotFound();
+                        // throw new Exception('Aucun identifiant de commentaire envoyé');
+                    }
+                }
+                elseif ($_GET['action'] === 'deleteComment') {
+                    if (isset($_GET['commentId']) && $_GET['commentId'] > 0) {
+                        $this->backController->deleteComment($_GET['commentId'], $_GET['chapterId']);
                     }
                     else {
                         $this->errorController->errorNotFound();
@@ -62,6 +71,9 @@ class Router
                 }
                 elseif ($_GET['action'] == 'addPost') {
                     $this->backController->addChapter($_POST);
+                }
+                elseif ($_GET['action'] == 'editPost') {
+                    $this->backController->editChapter($_GET['chapterId']);
                 }
             }
             else {

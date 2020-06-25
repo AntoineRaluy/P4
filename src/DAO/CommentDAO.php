@@ -32,16 +32,18 @@ class CommentDAO extends DAO
     public function postComment($chapterId, $author, $comment)
     {
         $sql = 'INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())';
-        $newComment = $this->createQuery($sql, [$postId, $author, $comment]);
-
-        return $newComment;
+        $this->createQuery($sql, [$chapterId, $author, $comment]);
     }
 
     public function reportComment($commentId)
     {
-        $connection=$this->dbConnect();
-        $update = $connection->prepare('UPDATE comments SET flag = 1 WHERE id = :id');
-        $update->execute(['id'=>$commentId]);
+        $sql = 'UPDATE comments SET flag = 1 WHERE id = ?';
+        $this->createQuery($sql,[1,$commentId]);
     }
 
+    public function deleteComment($commentId)
+    {
+        $sql = 'DELETE FROM comments WHERE id = ?';
+        $this->createQuery($sql, [$commentId]);
+    }
 }

@@ -8,6 +8,8 @@
         <em>le <?= $chapter->getCreationDate() ?></em>
     </h3>
     <p> <?= nl2br(htmlspecialchars($chapter->getContent())) ?> </p>
+
+    <a href="index.php?action=editChapter&amp;chapterId=<?= $chapter->getId(); ?>">Modifier</a>
 </div>
 
 <h2>Commentaires :</h2>
@@ -33,8 +35,11 @@
     <?php if($comment->getFlag() === '1'):?>
         <p><em>Ce commentaire a déjà été signalé.</em></p>
         <?php else: ?>
-        <p><em><a href="index.php?action=reportComment&amp;id=<?= $comment->getId() ?>&amp;idPost=<?= $_GET['chapterId'] ?>">Signaler ce commentaire</a></em></p>
+        <p><em><a href="index.php?action=reportComment&amp;commentId=<?= $comment->getId() ?>&amp;chapterId=<?= $chapter->getId() ?>">Signaler ce commentaire</a></em></p>
         <?php endif;?>
+
+    <p><a href="index.php?action=deleteComment&commentId=<?= $comment->getId(); ?>">Supprimer le commentaire</a></p>
+        <br>
     
 <?php endforeach; ?>
 

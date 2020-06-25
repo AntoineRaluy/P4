@@ -1,19 +1,29 @@
 <?php
-// session_start();
 
 namespace App\src\controller;
 
 class BackController extends Controller
 {
     public function addChapter($post)
-        {
-            if(isset($post['submit'])) {
-            $chapterDAO = new ChapterDAO();
-            $chapterDAO->addChapter($post);
-            header('Location: index.php');
-            }
-            require 'templates/backend/addChapter.php';
+    {
+        if(isset($post['submit'])) {
+        $this->ChapterDAO->addChapter($post);
+        header('Location: index.php');
         }
+        require 'templates/backend/addChapter.php';
+    }
+
+    public function editChapter($post, $chapterId)
+    {
+        $chapter = $this->chapterDAO->getChapter($hapterId);
+        header('Location: index.php?action=post&chapterId=' . $chapterId);
+    }
+    
+    public function deleteComment($commentId)
+    {
+        $this->commentDAO->deleteComment($commentId);
+        header('Location: index.php');
+    }
 
 }
 
