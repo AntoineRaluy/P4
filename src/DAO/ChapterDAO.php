@@ -36,4 +36,11 @@ class ChapterDAO extends DAO
         $chapter = $chapters->fetch(); 
         return $this->buildChapter($chapter);
     }
+
+    public function addChapter($chapter)
+    {
+        extract($chapter);
+        $sql = 'INSERT INTO post (title, content, author, creationDate) VALUES (?, ?, ?, NOW())';
+        $this->createQuery($sql, [$title, $content, $author]);
+    }
 }

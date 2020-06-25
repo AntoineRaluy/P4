@@ -10,6 +10,9 @@
     <body>
     <div class="container">
         <p><a href="/controller/backend.php">Connexion</a></p>
+
+        <a href="index.php?action=addPost">Nouvel article</a>
+        
         <?= $content ?>
     </div>
     </body>

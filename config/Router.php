@@ -59,6 +59,9 @@ class Router
                         // throw new Exception('Aucun identifiant de commentaire envoyé');
                     }
                 }
+                elseif ($_GET['action'] == 'addPost') {
+                    $this->backController->addChapter($_POST);
+                }
             }
             else {
                 $this->frontController->listChapters();
