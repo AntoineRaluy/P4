@@ -3,9 +3,7 @@
 
 namespace App\src\controller;
 
-use App\src\DAO\ChapterDAO;
-
-class BackController
+class BackController extends Controller
 {
     public function addChapter($post)
         {

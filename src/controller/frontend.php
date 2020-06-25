@@ -2,20 +2,8 @@
 
 namespace App\src\controller;
 
-use App\src\DAO\ChapterDAO;
-use App\src\DAO\CommentDAO;
-
-class FrontController
+class FrontController extends Controller
 {
-    private $chapterDAO;
-    private $commentDAO;
-
-    public function __construct()
-    {
-        $this->chapterDAO = new ChapterDAO();
-        $this->commentDAO = new CommentDAO();
-    }
-
     public function listChapters()
     {   
         $chapters = $this->chapterDAO->getChapters(); 
