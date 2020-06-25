@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
+        <meta charset="utf-8">
         <title><?= $title ?></title>
-        <link href="style.css" rel="stylesheet" /> 
+        <link href="node_modules\bootstrap\dist\css\bootstrap.min.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet"> 
     </head>
         
     <body>
+    <div class="container">
         <p><a href="/controller/backend.php">Connexion</a></p>
         <?= $content ?>
+    </div>
     </body>
 </html>

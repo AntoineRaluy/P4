@@ -1,6 +1,13 @@
 <?php
 session_start();
 
+// namespace App\src\controller;
+
+// class BackController
+// {
+
+// }
+
 if (isset($_POST['password'])) { 
     if ($_POST['password'] == 'blogp4') {
         $_SESSION['connecte'] = true;

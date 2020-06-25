@@ -1,48 +1,9 @@
 <?php
 
-require_once 'controller/frontend.php';
-require_once 'config.php';
+require_once 'src/controller/frontend.php';
+require_once 'src/controller/error.php';
+require_once 'vendor/autoload.php';
+require_once 'config/config.php';
 
-try {
-    if (isset($_GET['action'])) {
-        if ($_GET['action'] == 'listPosts') {
-            listPosts();
-        }
-        elseif ($_GET['action'] == 'post') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                post();
-            }
-            else {
-                throw new Exception('Aucun identifiant de billet envoyé');
-            }
-        }
-        elseif ($_GET['action'] == 'addComment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-                    addComment($_GET['id'], $_POST['author'], $_POST['comment']);
-                }
-                else {
-                    throw new Exception('Tous les champs ne sont pas remplis !');
-                }
-            }
-            else {
-                throw new Exception('Aucun identifiant de billet envoyé');
-            }
-        }
-        elseif ($_GET['action'] == 'reportComment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                flagComment($_GET['id'], $_GET['idPost']);
-            }
-            else {
-                throw new Exception('Aucun identifiant de commentaire envoyé');
-            }
-        }
-    }
-    else {
-        listPosts();
-    }
-}
-
-catch(Exception $e) { 
-    echo 'Erreur : ' . $e->getMessage();
-}
+$router = new \App\config\Router();
+$router->run();
