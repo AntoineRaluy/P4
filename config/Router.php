@@ -1,7 +1,6 @@
 <?php
 
 namespace App\config;
-use App\src\controller\Controller;
 use App\src\controller\FrontController;
 use App\src\controller\BackController;
 use App\src\controller\ErrorController;
@@ -52,13 +51,15 @@ class Router
                     }
                 }
                 elseif ($_GET['action'] === 'reportComment') {
-                    if (isset($_GET['commentId']) && $_GET['commentId'] > 0) {
-                        $this->frontController->flagComment($_GET['commentId'], $_GET['chapterId']);
-                    }
-                    else {
-                        $this->errorController->errorNotFound();
-                        // throw new Exception('Aucun identifiant de commentaire envoyé');
-                    }
+                    echo 'test';
+                    $this->frontController->flagComment($_GET['commentId'], $_GET['chapterId']);
+                    // if (isset($_GET['commentId']) && $_GET['commentId'] > 0) {
+                    //     $this->frontController->flagComment($_GET['commentId'], $_GET['chapterId']);
+                    // }
+                    // else {
+                    //     $this->errorController->errorNotFound();
+                    //     // throw new Exception('Aucun identifiant de commentaire envoyé');
+                    // }
                 }
                 elseif ($_GET['action'] === 'deleteComment') {
                     if (isset($_GET['commentId']) && $_GET['commentId'] > 0) {

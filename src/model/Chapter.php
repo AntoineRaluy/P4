@@ -7,15 +7,15 @@ class Chapter
     private $id;
     private $title;
     private $content;
-    private $author;
+    // private string $author;
     private $createdAt;
 
-    public function getId()
+    public function getId(): int 
     {
         return $this->id;
     }
 
-    public function setId($id)
+    public function setId(int $id): void
     {
         $this->id = $id;
     }

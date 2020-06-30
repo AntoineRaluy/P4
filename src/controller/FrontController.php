@@ -10,7 +10,7 @@ class FrontController extends Controller
         require 'templates/frontend/listPostsView.php';
     }
 
-    public function chapter($chapterId)
+    public function chapter(int $chapterId)
     {
         $chapter = $this->chapterDAO->getChapter($chapterId);   
         $comments = $this->commentDAO->getComments($chapterId);    

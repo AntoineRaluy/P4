@@ -50,7 +50,7 @@ class Comment
         $this->commentDate = $commentDate;
     }
 
-    public function getFlag()
+    public function getFlag(): int
     {
         return $this->flag;
     }

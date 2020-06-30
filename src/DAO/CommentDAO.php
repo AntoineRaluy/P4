@@ -37,8 +37,8 @@ class CommentDAO extends DAO
 
     public function reportComment($commentId)
     {
-        $sql = 'UPDATE comments SET flag = 1 WHERE id = ?';
-        $this->createQuery($sql,[1,$commentId]);
+        $sql = 'UPDATE comments SET flag = ? WHERE id = ?';
+        $this->createQuery($sql, [1, $commentId]);
     }
 
     public function deleteComment($commentId)

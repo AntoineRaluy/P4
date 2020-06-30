@@ -7,15 +7,15 @@ class BackController extends Controller
     public function addChapter($post)
     {
         if(isset($post['submit'])) {
-        $this->ChapterDAO->addChapter($post);
+        $this->chapterDAO->addChapter($post);
         header('Location: index.php');
         }
         require 'templates/backend/addChapter.php';
     }
 
-    public function editChapter($post, $chapterId)
+    public function editChapter($chapterId)
     {
-        $chapter = $this->chapterDAO->getChapter($hapterId);
+        $chapter = $this->chapterDAO->getChapter($chapterId);
         header('Location: index.php?action=post&chapterId=' . $chapterId);
     }
     
@@ -24,7 +24,6 @@ class BackController extends Controller
         $this->commentDAO->deleteComment($commentId);
         header('Location: index.php');
     }
-
 }
 
 // if (isset($_POST['password'])) { 
@@ -52,3 +51,5 @@ class BackController extends Controller
 // else { 
 //     echo "Vous êtes connecté.";
 // }
+
+// password_hash($post->get('password'),  PASSWORD_ARGON2ID)
