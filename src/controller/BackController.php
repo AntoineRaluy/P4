@@ -7,16 +7,26 @@ class BackController extends Controller
     public function addChapter($post)
     {
         if(isset($post['submit'])) {
-        $this->chapterDAO->addChapter($post);
-        header('Location: index.php');
+            $chapter = $this->chapterDAO->addChapter($post);
+            header('Location: index.php');
         }
         require 'templates/backend/addChapter.php';
     }
 
-    public function editChapter($chapterId)
-    {
+    public function editChapter($post, $chapterId)
+    {   
         $chapter = $this->chapterDAO->getChapter($chapterId);
-        header('Location: index.php?action=post&chapterId=' . $chapterId);
+        if(isset($post['submit'])) {
+            $this->chapterDAO->editChapter($post, $chapterId);
+            header('Location: index.php');
+        }
+        require 'templates/backend/editChapter.php';
+    }
+
+    public function deleteChapter($chapterId)
+    {
+        $this->chapterDAO->deleteChapter($chapterId);
+        header('Location: index.php');
     }
     
     public function deleteComment($commentId)

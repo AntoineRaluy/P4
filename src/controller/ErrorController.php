@@ -6,19 +6,21 @@ class ErrorController extends Controller
 {
     public function errorNotFound()
     {
-        echo 'Erreur : ';
+        echo 'Erreur : 1 ';
         // throw new Exception('Page inconnue.');
     }
 
     public function errorEmpty()
     {
-        echo 'Erreur : ';
+        echo 'Erreur : 2 ';
         // throw new Exception('Tous les champs ne sont pas remplis !');
     }
 
-    public function errorServer()
+    public function errorServer($e)
     {
-        echo 'Erreur : ';
-        //  . $e->getMessage();
+        // echo 'Erreur : 3 ';
+        
+        echo $e->getMessage();
+        
     }
 }

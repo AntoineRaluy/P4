@@ -7,9 +7,10 @@
     <h3> <?= htmlspecialchars($chapter->getTitle()) ?>
         <em>le <?= $chapter->getCreationDate() ?></em>
     </h3>
-    <p> <?= nl2br(htmlspecialchars($chapter->getContent())) ?> </p>
+    <p> <?= nl2br($chapter->getContent()) ?> </p>
 
-    <a href="index.php?action=editChapter&amp;chapterId=<?= $chapter->getId(); ?>">Modifier</a>
+    <a href="index.php?action=editPost&amp;chapterId=<?= $chapter->getId(); ?>">Modifier</a>
+    <a href="index.php?action=deletePost&amp;chapterId=<?= $chapter->getId(); ?>">Supprimer</a>
 </div>
 
 <h2>Commentaires :</h2>

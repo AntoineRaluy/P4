@@ -12,14 +12,13 @@ class ChapterDAO extends DAO
         $chapter->setId($field['id']);
         $chapter->setTitle($field['title']);
         $chapter->setContent($field['content']);
-        $chapter->setAuthor($field['author']);
         $chapter->setCreationDate($field['creationDate']);
         return $chapter;
     }
 
     public function getChapters()
     {   
-        $sql = 'SELECT id, title, content, author, creationDate FROM post ORDER BY id DESC';
+        $sql = 'SELECT id, title, content, creationDate FROM post ORDER BY id DESC';
         $chapterFields = $this->createQuery($sql);
         $chapters = [];
         foreach ($chapterFields as $field){
@@ -31,7 +30,7 @@ class ChapterDAO extends DAO
     
     public function getChapter($chapterId)
     {
-        $sql = 'SELECT id, title, content, author, creationDate FROM post WHERE id = ?';
+        $sql = 'SELECT id, title, content, creationDate FROM post WHERE id = ?';
         $chapters = $this->createQuery($sql,[$chapterId]);
         $chapter = $chapters->fetch(); 
         return $this->buildChapter($chapter);
@@ -40,7 +39,25 @@ class ChapterDAO extends DAO
     public function addChapter($chapter)
     {
         extract($chapter);
-        $sql = 'INSERT INTO post (title, content, author, creationDate) VALUES (?, ?, ?, NOW())';
-        $this->createQuery($sql, [$title, $content, $author]);
+        $sql = 'INSERT INTO post (title, content, creationDate) VALUES (?, ?, NOW())';
+        $this->createQuery($sql, [$title, $content]);
+    }
+
+    public function editChapter($post, $chapterId)
+    {
+        $sql = 'UPDATE post SET title=:title, content=:content WHERE id=:chapterId';
+        $this->createQuery($sql, [
+            'title' => $_POST['title'], 
+            'content' => $_POST['content'], 
+            'chapterId' => $_GET['chapterId']
+        ]);
+    }
+
+    public function deleteChapter($chapterId)
+    {   
+        $sql = 'DELETE FROM comments WHERE post_id = ?';
+        $this->createQuery($sql, [$chapterId]);
+        $sql = 'DELETE FROM post WHERE id = ?';
+        $this->createQuery($sql, [$chapterId]);
     }
 }

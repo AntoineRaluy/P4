@@ -7,8 +7,7 @@ class Chapter
     private $id;
     private $title;
     private $content;
-    // private string $author;
-    private $createdAt;
+    private $creationDate;
 
     public function getId(): int 
     {
@@ -40,17 +39,7 @@ class Chapter
         $this->content = $content;
     }
 
-    public function getAuthor()
-    {
-        return $this->author;
-    }
-
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-    }
-
-    public function getCreationDate()
+      public function getCreationDate()
     {
         return $this->creationDate;
     }
