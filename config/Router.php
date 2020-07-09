@@ -38,6 +38,9 @@ class Router
                     case 'reportComment':
                         $this->frontController->flagComment($_GET['commentId'], $_GET['chapterId']);
                         break;
+                    case 'checkComment':
+                        $this->backController->checkComment($_GET['commentId'], $_GET['chapterId']);
+                        break;
                     case 'deleteComment':
                         $this->backController->deleteComment($_GET['commentId'], $_GET['chapterId']);
                         break;
@@ -49,6 +52,18 @@ class Router
                         break;
                     case 'deletePost':
                         $this->backController->deleteChapter($_GET['chapterId']);
+                        break;
+                    case 'login':
+                        $this->frontController->login($_POST);                   
+                        break;
+                    case 'updatePassword':
+                        $this->backController->updatePassword($_POST);
+                        break;
+                    case 'logout':
+                        $this->backController->logout();
+                        break;
+                    case 'admin':
+                        $this->backController->admin();
                         break;
                     default:
                         $this->frontController->listChapters();

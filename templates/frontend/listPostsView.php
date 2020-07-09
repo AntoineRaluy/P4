@@ -4,7 +4,7 @@
     <h1>Jean Forteroche</h1>
 
 <?php foreach($chapters as $chapter): ?>
-    <h2><?= $chapter->getTitle() ?> </h2>
+    <h2><a href="index.php?action=post&amp;chapterId=<?= $chapter->getId() ?>"><?= $chapter->getTitle() ?></a> </h2>
     <p><?= $chapter->getContent() ?>
     <br>
     <em>le <?= $chapter->getCreationDate() ?></em>

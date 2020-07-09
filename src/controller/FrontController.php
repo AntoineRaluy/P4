@@ -28,4 +28,21 @@ class FrontController extends Controller
         $this->commentDAO->reportComment($commentId);
         header('Location: index.php?action=post&chapterId='. $chapterId);
     }
+
+    public function login($post)
+    {
+        if(isset($post['submit'])) {
+            $result = $this->userDAO->login($_POST['password']);
+
+            if($result && $result['passwordOk']) {
+                $_SESSION['username'] = $_POST['username'];
+                header('Location: index.php');
+            }
+            else {
+                echo 'Le pseudo ou le mot de passe sont incorrects.';
+                require 'templates/frontend/login.php';   
+            }
+        }
+        require 'templates/frontend/login.php';
+    }
 }

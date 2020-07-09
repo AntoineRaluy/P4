@@ -9,10 +9,21 @@
         
     <body>
     <div class="container">
-        <p><a href="/controller/backend.php">Connexion</a></p>
+        <?php
+        if(isset($_SESSION['username'])) {
+        ?>
+        <p><a href="/index.php?action=updatePassword">Modifier le mot de passe</a>
+        <p><a href="/index.php?action=logout">Déconnexion</a></p>
+        <p><a href="index.php?action=addPost">Nouvel article</a></p>
 
-        <a href="index.php?action=addPost">Nouvel article</a>
-        
+        <?php 
+        } else {
+        ?>
+        <p><a href="/index.php?action=login">Connexion</a></p>
+
+        <?php
+        }
+        ?>        
         <?= $content ?>
     </div>
     </body>

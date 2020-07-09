@@ -8,9 +8,6 @@
         <em>le <?= $chapter->getCreationDate() ?></em>
     </h3>
     <p> <?= nl2br($chapter->getContent()) ?> </p>
-
-    <a href="index.php?action=editPost&amp;chapterId=<?= $chapter->getId(); ?>">Modifier</a>
-    <a href="index.php?action=deletePost&amp;chapterId=<?= $chapter->getId(); ?>">Supprimer</a>
 </div>
 
 <h2>Commentaires :</h2>
@@ -38,8 +35,6 @@
         <?php else: ?>
         <p><em><a href="index.php?action=reportComment&amp;commentId=<?= $comment->getId() ?>&amp;chapterId=<?= $chapter->getId() ?>">Signaler ce commentaire</a></em></p>
         <?php endif;?>
-
-    <p><a href="index.php?action=deleteComment&amp;commentId=<?= $comment->getId(); ?>">Supprimer le commentaire</a></p>
         <br>
     
 <?php endforeach; ?>
