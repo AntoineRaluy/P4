@@ -1,6 +1,3 @@
-<?php $this->title = "Modifier le Chapitre" ?>
-<h1>Nouveau Chapitre</h1>
-
 <?php ob_start(); ?>
 <div>
     <form method="post" action="index.php?action=editPost&amp;chapterId=<?= $chapter->getId() ?>">

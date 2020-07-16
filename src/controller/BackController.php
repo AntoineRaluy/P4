@@ -13,24 +13,34 @@ class BackController extends Controller
             return true;
         }
     }
+    
+    public function admin() 
+    {   
+        if($this->checkAdmin()) {
+            $chapters = $this->chapterDAO->getChapters();
+            $comments = $this->commentDAO->getReportedComments();
+            require 'templates/backend/admin.php';
+            return [$chapters, $comments];
+        }
+    }
 
-    public function addChapter($post)
+    public function addChapter($newChapter)
     {
         if($this->checkAdmin()) {
-            if(isset($post['submit'])) {
-                $chapter = $this->chapterDAO->addChapter($post);
+            if(isset($_POST['submit'])) {
+                $chapter = $this->chapterDAO->addChapter($newChapter);
                 header('Location: index.php?action=admin');
             }
             require 'templates/backend/addChapter.php';
         }
     }
 
-    public function editChapter($post, $chapterId)
+    public function editChapter($editedChapter, $chapterId)
     {   
         if($this->checkAdmin()) {
             $chapter = $this->chapterDAO->getChapter($chapterId);
-            if(isset($post['submit'])) {
-                $this->chapterDAO->editChapter($post, $chapterId);
+            if(isset($_POST['submit'])) {
+                $this->chapterDAO->editChapter($editedChapter, $chapterId);
                 header('Location: index.php?action=admin');
             }
             require 'templates/backend/editChapter.php';
@@ -61,11 +71,11 @@ class BackController extends Controller
         }
     }
 
-    public function updatePassword($post)
+    public function updatePassword($newPassword)
     {
         if($this->checkAdmin()) {
-            if(isset($post['submit'])) {
-                $this->userDAO->updatePassword($post, $_SESSION['username']);
+            if(isset($_POST['submit'])) {
+                $this->userDAO->updatePassword($newPassword, $_SESSION['username']);
                 header('Location: index.php');
             }
             require 'templates/backend/updatePassword.php';
@@ -78,16 +88,6 @@ class BackController extends Controller
             session_destroy();
 
             header('Location: index.php');
-        }
-    }
-
-    public function admin() 
-    {   
-        if($this->checkAdmin()) {
-            $chapters = $this->chapterDAO->getChapters();
-            $comments = $this->commentDAO->getReportedComments();
-            require 'templates/backend/admin.php';
-            return [$chapters, $comments];
         }
     }
 }

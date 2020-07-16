@@ -29,13 +29,12 @@ class FrontController extends Controller
         header('Location: index.php?action=post&chapterId='. $chapterId);
     }
 
-    public function login($post)
+    public function login($login)
     {
-        if(isset($post['submit'])) {
-            $result = $this->userDAO->login($_POST['password']);
-
+        if(isset($_POST['submit'])) {
+            $result = $this->userDAO->login($login);
             if($result && $result['passwordOk']) {
-                $_SESSION['username'] = $_POST['username'];
+                $_SESSION['username'] = $login['username'];
                 header('Location: index.php');
             }
             else {

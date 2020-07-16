@@ -54,7 +54,7 @@ class Router
                         $this->backController->deleteChapter($_GET['chapterId']);
                         break;
                     case 'login':
-                        $this->frontController->login($_POST);                   
+                        $this->frontController->login($_POST);                  
                         break;
                     case 'updatePassword':
                         $this->backController->updatePassword($_POST);

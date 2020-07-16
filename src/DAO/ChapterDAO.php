@@ -18,7 +18,7 @@ class ChapterDAO extends DAO
 
     public function getChapters()
     {   
-        $sql = 'SELECT id, title, content, creationDate FROM post ORDER BY id DESC';
+        $sql = 'SELECT id, title, content, date_format(creationDate, "%d/%m/%Y") as creationDate FROM post ORDER BY id DESC';
         $chapterFields = $this->createQuery($sql);
         $chapters = [];
         foreach ($chapterFields as $field){
@@ -30,25 +30,29 @@ class ChapterDAO extends DAO
     
     public function getChapter($chapterId)
     {
-        $sql = 'SELECT id, title, content, creationDate FROM post WHERE id = ?';
+        $sql = 'SELECT id, title, content, date_format(creationDate, "%d/%m/%Y") as creationDate FROM post WHERE id = ?';
         $chapters = $this->createQuery($sql,[$chapterId]);
         $chapter = $chapters->fetch(); 
         return $this->buildChapter($chapter);
     }
 
-    public function addChapter($chapter)
+    public function addChapter($newChapter)
     {
-        extract($chapter);
-        $sql = 'INSERT INTO post (title, content, creationDate) VALUES (?, ?, NOW())';
-        $this->createQuery($sql, [$title, $content]);
+        extract($newChapter);
+        var_dump($newChapter);
+        $sql = 'INSERT INTO post (title, content, creationDate) VALUES (:title, :content, NOW())';
+        $this->createQuery($sql, [
+            'title' => $newChapter['title'], 
+            'content' => $newChapter['content']
+        ]);
     }
 
-    public function editChapter($post, $chapterId)
+    public function editChapter($editedChapter, $chapterId)
     {
         $sql = 'UPDATE post SET title=:title, content=:content WHERE id=:chapterId';
         $this->createQuery($sql, [
-            'title' => $_POST['title'], 
-            'content' => $_POST['content'], 
+            'title' => $editedChapter['title'], 
+            'content' => $editedChapter['content'], 
             'chapterId' => $_GET['chapterId']
         ]);
     }
