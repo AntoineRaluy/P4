@@ -1,13 +1,21 @@
 <?php ob_start(); ?>
-<div>
-    <form method="post" action="index.php?action=editPost&amp;chapterId=<?= $chapter->getId() ?>">
-        <label for="title">Titre</label><br>
-        <input type="text" id="title" name="title" value="<?= htmlspecialchars($chapter->getTitle()) ?>"><br>
-        <label for="content">Contenu</label><br>
-        <textarea id="content" name="content"><?= nl2br(($chapter->getContent())) ?></textarea><br>
-        <input type="submit" value="Mettre à jour" id="submit" name="submit">
-    </form>
-    <a href="index.php">Retour à l'accueil</a>
+<?php $title = "Modifier le chapitre" ?>
+
+<div class="row jumbotron editchapter shadow-sm">
+    <div class="col">
+        <form method="post" action="index.php?action=editPost&amp;chapterId=<?= $chapter->getId() ?>">
+            <div class="form-group">  
+                <label for="title">Titre</label><br>
+                <input type="text" id="title" name="title" class="form-control" value="<?= htmlspecialchars($chapter->getTitle()) ?>"><br>
+            </div>  
+            <div class="form-group"> 
+                <label for="content">Texte</label><br>
+                <textarea id="content" name="content" class="form-control" rows="15"><?= ($chapter->getContent())?></textarea><br>
+            </div> 
+                <input type="submit" value="Mettre à jour" id="submit" name="submit" class="btn btn-primary">
+            
+        </form>
+    </div>
 </div>
 
 <script src="node_modules\tinymce\tinymce.min.js"></script>
