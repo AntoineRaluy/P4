@@ -6,7 +6,7 @@
         <title><?= $title ?></title>
         <meta name="description"
         content="Billet simple pour l'Alaska. Découvrez le nouveau livre en ligne de Jean Forteroche.">
-        <link href="node_modules\bootstrap\dist\css\bootstrap.min.css" rel="stylesheet">
+        <link href="\node_modules\bootstrap\dist\css\bootstrap.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
         <link href="public/css/style.css" rel="stylesheet"> 
