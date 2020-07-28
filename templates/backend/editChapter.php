@@ -1,4 +1,5 @@
 <?php ob_start(); ?>
+
 <?php $title = "Modifier le chapitre" ?>
 
 <div class="row jumbotron editchapter shadow-sm">

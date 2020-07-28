@@ -1,4 +1,5 @@
 <?php ob_start(); ?>
+
 <?php $title = "Administration" ?>
 
 <div class="row chapterAdmin mb-5">

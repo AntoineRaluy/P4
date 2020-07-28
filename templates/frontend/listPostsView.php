@@ -1,6 +1,6 @@
-<?php $title = "Jean Forteroche" ?>
-
 <?php ob_start(); ?>
+
+<?php $title = "Jean Forteroche" ?>
 
 <div class="row">
 <?php foreach($chapters as $chapter): ?>

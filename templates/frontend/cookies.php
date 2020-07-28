@@ -1,4 +1,5 @@
 <?php ob_start(); ?>
+
 <?php $title = "Politique de confidentialité" ?>
 
 <div class="jumbotron">

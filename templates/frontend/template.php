@@ -13,7 +13,7 @@
     </head>
         
     <body>
-    <div class="bg-info navmenu">
+    <header class="bg-info navmenu">
         <div class="container">
             <div class="row">
                 <nav class="col navbar navbar-expand-md navbar-dark">
@@ -50,9 +50,10 @@
                 </nav>
             </div>
         </div>
-    </div>
+    </header>
 
-    <?php if((basename($_SERVER['PHP_SELF']) == "index.php") && !isset($_GET['action'])): ?>
+<!-- Affiche image de fond sur la page principale -->
+    <?php if((basename($_SERVER['PHP_SELF']) == "index.php") && !isset($_GET['action'])): ?> 
         <div class="hero-image">
             <div class="hero-text">
                 <h1 class="font-italic font-weight-normal display-3">Billet simple pour l'Alaska</h1>
@@ -66,14 +67,15 @@
         <?= $content ?>
     </div>
 
+    <footer class="bg-info footmenu">
+        <p class="text-center pt-1"><a class="policies text-white" href="index.php?action=policies">Mentions légales</a> <a class="cookies pl-3 pr-3 text-white" href="index.php?action=cookies">Politique de confidentialité</a> <a class="text-white " href="mailto:antoine.raluy@hotmail.fr">Contact</a></p>
+    </footer>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//cookie.eurowebpage.com/cookie.js?skin=cookielaw3&amp;box_radius=4&amp;position=bottom_right&amp;delay=1&amp;bg_color=22a9e6&amp;msg_color=ffffff&amp;link_color=0c0c0c&amp;accept_background=ffffff&amp;accept_color=295285&amp;accept_radius=3"></script>
-                        
+
     </body>
 
-    <footer class="bg-info footmenu">
-        <p class="text-center pt-1"><a class="policies text-white" href="index.php?action=policies">Mentions légales</a> <a class="cookies pl-3 pr-3 text-white" href="index.php?action=cookies">Politique de confidentialité</a> <a class="text-white " href="mailto:antoine.raluy@hotmail.fr">Contact</a></p>
-    </footer>
 </html>

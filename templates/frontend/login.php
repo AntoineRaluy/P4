@@ -1,4 +1,5 @@
 <?php ob_start(); ?>
+
 <?php $title = "Connexion" ?>
 
 <div class="row">

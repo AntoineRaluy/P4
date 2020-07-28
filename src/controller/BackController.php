@@ -7,7 +7,7 @@ class BackController extends Controller
     private function checkAdmin()
     {
         if(!isset($_SESSION['username'])) {
-            echo 'Vous devez vous connecter pour accéder à cette page';
+            echo 'Vous devez vous connecter pour accéder à cette page.';
             header('Location: index.php?action=login');
         } else {
             return true;

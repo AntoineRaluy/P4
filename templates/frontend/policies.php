@@ -1,4 +1,5 @@
 <?php ob_start(); ?>
+
 <?php $title = "Mentions légales" ?>
 
 <div class="jumbotron">

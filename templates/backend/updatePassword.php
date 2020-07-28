@@ -1,4 +1,5 @@
 <?php ob_start(); ?>
+
 <?php $title = "Modifier le mot de passe" ?>
 
 <div class="row">

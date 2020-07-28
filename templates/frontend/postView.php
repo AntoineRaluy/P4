@@ -1,6 +1,6 @@
+<?php ob_start(); ?>
 <?php $title = $chapter->getTitle() ?>
 
-<?php ob_start(); ?>
     <div class="row">
         <div class="col mt-5">
             <article>
