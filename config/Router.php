@@ -4,7 +4,7 @@ namespace App\config;
 use App\src\controller\FrontController;
 use App\src\controller\BackController;
 use App\src\controller\ErrorController;
-use Exception;
+use Throwable;
 
 class Router
 {
@@ -65,6 +65,12 @@ class Router
                     case 'admin':
                         $this->backController->admin();
                         break;
+                    case 'cookies':
+                        require 'templates/frontend/cookies.php';
+                        break;
+                    case 'policies':
+                        require 'templates/frontend/policies.php';
+                    break;
                     default:
                         $this->frontController->listChapters();
                 }
@@ -74,8 +80,8 @@ class Router
             }
         }
         
-        catch(Exception $e) { 
-            $this->errorController->errorServer($e);
+        catch(Throwable $e) { 
+            $this->errorController->error();
         }
     }
 }

@@ -18,7 +18,7 @@ class ChapterDAO extends DAO
 
     public function getChapters()
     {   
-        $sql = 'SELECT id, title, content, date_format(creationDate, "%d/%m/%Y") as creationDate FROM post ORDER BY id DESC';
+        $sql = 'SELECT id, title, content, creationDate FROM post ORDER BY id DESC';
         $chapterFields = $this->createQuery($sql);
         $chapters = [];
         foreach ($chapterFields as $field){
@@ -30,7 +30,7 @@ class ChapterDAO extends DAO
     
     public function getChapter($chapterId)
     {
-        $sql = 'SELECT id, title, content, date_format(creationDate, "%d/%m/%Y") as creationDate FROM post WHERE id = ?';
+        $sql = 'SELECT id, title, content, creationDate FROM post WHERE id = ?';
         $chapters = $this->createQuery($sql,[$chapterId]);
         $chapter = $chapters->fetch(); 
         return $this->buildChapter($chapter);
@@ -39,7 +39,6 @@ class ChapterDAO extends DAO
     public function addChapter($newChapter)
     {
         extract($newChapter);
-        var_dump($newChapter);
         $sql = 'INSERT INTO post (title, content, creationDate) VALUES (:title, :content, NOW())';
         $this->createQuery($sql, [
             'title' => $newChapter['title'], 

@@ -10,6 +10,7 @@ class CommentDAO extends DAO
     {
         $comment = new Comment();
         $comment->setId($field['id']);
+        $comment->setChapterId($field['post_id']);
         $comment->setAuthor($field['author']);
         $comment->setComment($field['comment']);
         $comment->setCommentDate($field['comment_date']);
@@ -19,7 +20,7 @@ class CommentDAO extends DAO
 
     public function getComments($chapterId)
     {
-        $sql = 'SELECT id, author, comment, date_format(comment_date, "%d/%m/%Y") as comment_date, flag FROM comments WHERE post_id = ? ORDER BY comment_date DESC';
+        $sql = 'SELECT id, post_id, author, comment, date_format(comment_date, "%d/%m/%Y à %H:%i") as comment_date, flag FROM comments WHERE post_id = ? ORDER BY comment_date DESC';
         $commentFields = $this->createQuery($sql, [$chapterId]);
         $comments = [];
         foreach ($commentFields as $field){
@@ -55,7 +56,7 @@ class CommentDAO extends DAO
 
     public function getReportedComments()
     {
-        $sql = 'SELECT id, author, comment, date_format(comment_date, "%d/%m/%Y") as comment_date, flag FROM comments WHERE flag = ? ORDER BY comment_date DESC';
+        $sql = 'SELECT id, post_id, author, comment, date_format(comment_date, "%d/%m/%Y") as comment_date, flag FROM comments WHERE flag = ? ORDER BY comment_date DESC';
         $commentFields = $this->createQuery($sql, [1]);
         $comments = [];
         foreach ($commentFields as $field) {

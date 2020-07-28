@@ -5,19 +5,30 @@ namespace App\src\model;
 class Comment
 {
     private $id;
+    private $chapterId;
     private $author;
     private $comment;
     private $commentDate;
     private $flag;
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setId($id)
+    public function setId(int $id): void
     {
         $this->id = $id;
+    }
+
+    public function getChapterId()
+    {
+        return $this->chapterId;
+    }
+
+    public function setChapterId($chapterId)
+    {
+        $this->chapterId = $chapterId;
     }
 
     public function getAuthor()

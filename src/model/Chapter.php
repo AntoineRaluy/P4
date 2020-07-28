@@ -41,7 +41,7 @@ class Chapter
 
       public function getCreationDate()
     {
-        return $this->creationDate;
+        return $this->creationDate;        
     }
 
     public function setCreationDate($creationDate)
