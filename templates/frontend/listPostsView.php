@@ -4,7 +4,7 @@
 
 <div class="row">
 <?php foreach($chapters as $chapter): ?>
-    <div class="col-4">
+    <div class="col-sm-12 col-md-6 col-lg-4">
         <div class="card m-2 shadow-sm">
                 <article class="p-3">
                     <h2 class="card-title font-weight-normal"><a href="index.php?action=post&amp;chapterId=<?= $chapter->getId() ?>" class="stretched-link"><?= $chapter->getTitle() ?></a> </h2>

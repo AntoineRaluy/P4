@@ -75,3 +75,23 @@ th {
 .chapterAdmin {
     margin-top: 10%;
 }
+
+
+@media all and (max-width: 768px) {
+
+    html {
+        font-size: 0.9rem;
+    }
+
+    .chapterAdmin {
+        margin-top: 25%;
+    }
+
+    .chapterComments {
+        width: 85% !important;
+    }
+
+    .commentcard {
+        width: 100% !important;
+    }
+}

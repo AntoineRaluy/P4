@@ -20,12 +20,12 @@
     <div class="col">
         <h3>Commentaires</h3>
 
-        <form class="w-50 mx-auto mt-4" action="index.php?action=addComment&amp;chapterId=<?= $chapter->getId() ?>" method="post">
+        <form class="w-50 mx-auto mt-4 chapterComments" action="index.php?action=addComment&amp;chapterId=<?= $chapter->getId() ?>" method="post">
             <div class="form-group">
                 <input type="text" id="author" name="author" class="form-control" placeholder="Nom" required>
             </div>
             <div class="form-group">  
-                <textarea id="comment" name="comment" class="form-control" placeholder="Commentaire" required></textarea>
+                <textarea id="comment" name="comment" class="form-control" rows="5" placeholder="Commentaire" required></textarea>
             </div>
             <div class="col text-center">
                 <input type="submit" class="btn btn-primary w-25" value="Poster">
