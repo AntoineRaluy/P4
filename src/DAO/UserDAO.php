@@ -2,6 +2,8 @@
 
 namespace App\src\DAO;
 
+use App\src\model\User;
+
 class UserDAO extends DAO
 {
     public function login($login)

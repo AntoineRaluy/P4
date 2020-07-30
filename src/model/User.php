@@ -23,7 +23,7 @@ class User
         return $this->username;
     }
 
-    public function setId($username)
+    public function setUsername($username)
     {
         $this->username = $username;
     }
@@ -33,7 +33,7 @@ class User
         return $this->password;
     }
 
-    public function setId($password)
+    public function setPassword($password)
     {
         $this->password = $password;
     }
